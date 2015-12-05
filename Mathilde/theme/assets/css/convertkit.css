@@ -1,0 +1,28 @@
+// Styles for ConvertKit Popover Subscription form (Full > Modal).
+
+.ck_modal {
+  top: 50px !important;
+}
+
+.ck_form_title {
+  margin-top: 20px !important;
+}
+
+.ck_close_link {
+  visibility: hidden;
+}
+
+.ck_powered_by {
+  visibility: hidden;
+margin-bottom: -25px;
+}
+
+.ck_form {
+  border-radius: 5px;
+  border-top: solid 0px !important;
+  border-bottom: solid 0px !important;
+}
+
+.ck_vertical .ck_form_content {
+border-bottom: solid 1px #C8AB7B;
+}

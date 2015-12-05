@@ -1,0 +1,40 @@
+{% extends "partials/base.html" %}
+
+{% block content %}
+  {{ super() }}
+
+  <article>
+    <header>
+      <h1>{{ post.title }}</h1>
+      <p class="entry-meta">
+        <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%-d %B %Y') }}</time>
+        {{ post.tags|tags(last_separator=' and ', prefix=' in ') }}
+      </p>
+    </header>
+
+    <div class="content">
+      {{ post.content }}
+
+    <div class="seperator"></div>
+
+      {% for author in post.authors %}
+      <div class="bio-wrapper">
+      <div class="row">
+        <div id="author" class="col-md-2">
+          <span class="tint">
+            <img src="{{ author.avatar }}" alt="{{ author.name }}" class="img-circle" width=110 height=110>
+          </span>
+        </div>
+        <div class="col-md-10">
+          <h3>{{ author.name }}</h3>
+          <p>{{ author.bio }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+
+    {{ site.code_post }}
+  </article>
+
+{% endblock content %}
