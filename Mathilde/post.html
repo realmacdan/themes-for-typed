@@ -6,30 +6,28 @@
   <article>
     <header>
       <h1>{{ post.title }}</h1>
-      <p class="entry-meta">
-        <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%-d %B %Y') }}</time>
-        {{ post.tags|tags(last_separator=' and ', prefix=' in ') }}
-      </p>
     </header>
 
     <div class="content">
       {{ post.content }}
 
+      <p class="entry-meta">
+        Published on <time datetime="{{ post.published_at|date(isoformat=True) }}">{{ post.published_at|date('%-d %B %Y') }}</time>
+        {{ post.tags|tags(last_separator=' and ', prefix=' in ') }}
+      </p>
     <div class="seperator"></div>
 
       {% for author in post.authors %}
-      <div class="bio-wrapper">
-      <div class="row">
-        <div id="author" class="col-md-2">
-          <span class="tint">
-            <img src="{{ author.avatar }}" alt="{{ author.name }}" class="img-circle" width=110 height=110>
-          </span>
-        </div>
-        <div class="col-md-10">
-          <h3>{{ author.name }}</h3>
-          <p>{{ author.bio }}</p>
-        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+          <div class="row author-wrapper">
+            <div class="col-xs-4"><img src="{{ author.avatar }}" alt="{{ author.name }}" alt="Responsive image"></div>
+            <div class="col-xs-8"><h3>{{ author.name }}</h3><p>{{ author.bio }}</p></div>
+          </div>
+          </div>
       </div>
+
       {% endfor %}
     </div>
     </div>
