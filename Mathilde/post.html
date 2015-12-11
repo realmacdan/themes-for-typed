@@ -24,7 +24,7 @@
 	{% endif %}
     "datePublished": "{{ post.published_at|date(isoformat=True) }}",
     "description": "{{ meta.description }}",
-    "articleBody": "{{ meta.description }}"
+    "articleBody": "{{ post.content|striptags }}"
   }
   </script>
   
