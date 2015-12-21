@@ -1,5 +1,35 @@
 {% extends "partials/base.html" %}
 
+{% block meta %}
+
+  {{ super() }}
+
+  {% if post.images %}
+  <meta name="twitter:image" content="{{ post.images[0].url }}">
+  <meta property="og:image" content="{{ post.images[0].url }}" />
+  {% endif %}
+  
+  <meta property="og:url" content="{{ post.url|absolute_url }}" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ meta.title }}",
+    "alternativeHeadline": "{{ meta.title }}",
+	{% if post.images %}
+    "image": [
+      "{{ post.images[0].url }}"
+    ],
+	{% endif %}
+    "datePublished": "{{ post.published_at|date(isoformat=True) }}",
+    "description": "{{ meta.description }}",
+    "articleBody": "{{ post.content|striptags|e }}"
+  }
+  </script>
+  
+{% endblock meta %}
+
 {% block content %}
   {{ super() }}
 
